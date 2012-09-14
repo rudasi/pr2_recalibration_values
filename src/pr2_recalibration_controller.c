@@ -8,11 +8,6 @@ Pr2RecalibrationValues::Pr2RecalibrationValues()
 {
 }
 
-Pr2RecalibrationValues::~Pr2RecalibrationValues()
-{
-//need to figure out how to stop dervice
-}
-
 bool Pr2RecalibrationValues::init(pr2_mechanism_model::RobotState *robot, const std::string &joint_name)
 {
   if(!robot)
@@ -54,18 +49,20 @@ bool Pr2RecalibrationValues::init(pr2_mechanism_model::RobotState *robot, ros::N
   }
 
   //need to advertise service and create srv file
+  srv_ = n.advertiseService("get_calibration_offset", &Pr2RecalibrationValues::getOffset, this);
 }
    
 void Pr2RecalibrationValues::update()
 {
-
-
 }
 
 void Pr2CalibrationValues::stopping()
 {
 }
 
-
+bool getOffset(pr2_recalibration_values::GetCalibrationOffset::Request& req, pr2_recalibration_values::GetCalibrationOffset::Response& resp)
+{
+  
+}
 }
 

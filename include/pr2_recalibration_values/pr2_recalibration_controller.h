@@ -11,7 +11,7 @@ class Pr2RecalibrationValues: public pr2_controller_interface::Controller
 {
 private: 
   pr2_mechanism_model::JointState* joint_state_; 
-  pr2_mechanism_model::JointState* robot_;
+  pr2_mechanism_model::RobotState* robot_;
   ros::NodeHandle node_;
   ros::ServiceServer srv_;
 
@@ -23,6 +23,7 @@ public:
   virtual void starting();
   virtual void update();
   virtual void stopping();
+  bool getOffset(pr2_recalibration_values::GetCalibrationOffset::Request& req, pr2_recalibration_values::GetCalibrationOffset::Response& resp)
 };
 }
 
